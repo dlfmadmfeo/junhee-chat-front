@@ -11,6 +11,9 @@
 .yarn/build-state.yml
 .yarn/install-state.gz
 
+# Yarn SDK 관련 파일 제외
+.yarn/sdks/
+
 # VSCode 관련 설정 (공유할 것만 포함)
 .vscode/*
 !.vscode/settings.json  # 설정 파일만 포함
