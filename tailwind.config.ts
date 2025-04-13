@@ -11,6 +11,8 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        kakao: "#f9e000",
+        "kakao-blue": "#9bbbd4",
       },
     },
   },
