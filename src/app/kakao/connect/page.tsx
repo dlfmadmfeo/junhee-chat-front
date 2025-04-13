@@ -108,15 +108,13 @@ export default function Connect() {
                   <div
                     className={`${
                       isMe ? "bg-kakao" : "bg-white"
-                    } max-w-[300px] break-all  p-[4px] pl-[8px] pr-[8px] rounded-sm order-${
-                      isMe ? "2" : "1"
+                    } max-w-[300px] break-all  p-[4px] pl-[8px] pr-[8px] rounded-sm order-2
                     } text-[14px]`}
                   >
                     {message}
                   </div>
                   <div
-                    className={`datetime text-gray-700 text-[11px] ml-1 mr-1 order-${
-                      isMe ? "1" : "2"
+                    className={`datetime text-gray-700 text-[11px] ml-1 mr-1 order-1
                     }`}
                   >
                     [오후] 7시 10분
