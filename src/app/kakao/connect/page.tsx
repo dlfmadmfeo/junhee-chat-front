@@ -1,7 +1,7 @@
 "use client";
 import { Fragment, useEffect, useRef, useState } from "react";
 import SockJS from "sockjs-client/dist/sockjs.min.js";
-import { Stomp, Client, over } from "@stomp/stompjs";
+import { Stomp, Client } from "@stomp/stompjs";
 
 const BOTTOM_TEXTAREA_HEIGHT = 120;
 const BOTTOM_SEND_HEIGHT = 40;
@@ -79,11 +79,7 @@ export default function Connect() {
       });
 
       // 최초 입장 메시지 전송
-      client.send(
-        "/app/hello",
-        {},
-        JSON.stringify({ content: "" })
-      );
+      client.send("/app/hello", {}, JSON.stringify({ content: "" }));
     });
 
     return () => {
