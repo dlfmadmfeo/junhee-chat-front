@@ -6,10 +6,9 @@ export default function Login() {
   return (
     <>
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <div className="bg-kakao w-[400px] h-[600px] text-center">
+        <div className="bg-kakao w-full h-screen sm:w-[400px] sm:h-[600px] text-center">
           <div className="header w-full h-[10px]"></div>
           <div className="image h-[200px] flex items-center justify-center">
-            {/* <Image src={"/images/kakao-talk-1.png"} height={50} width={50} alt=""/> */}
             <img src="/images/kakao-talk-1.png" alt="" height={80} width={80} />
           </div>
           <div className="center">
