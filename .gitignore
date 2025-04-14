@@ -8,12 +8,12 @@
 
 # zero-install - Yarn 관련 파일 제외 및 포함
 .yarn/*
-!.yarn/cache
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
+#!.yarn/cache
+#!.yarn/patches
+#!.yarn/plugins
+#!.yarn/releases
+#!.yarn/sdks
+#!.yarn/versions
 
 # VSCode 관련 설정 (공유할 것만 포함)
 .vscode/*
