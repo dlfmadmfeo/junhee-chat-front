@@ -23,7 +23,7 @@ export default function Connect() {
       setMessage("");
       return;
     }
-    setMessages((prev) => [...prev, message]);
+    // setMessages((prev) => [...prev, message]);
 
     if (!isFirst) {
       if (!message?.trim()) {
@@ -55,7 +55,7 @@ export default function Connect() {
     }
   };
 
-  useEffect(() => {
+  useEffect(() => {    
     const socket = new SockJS(`${process.env.NEXT_PUBLIC_APP_FRONT_IP}/ws`);
     const client = Stomp.over(socket);
     stompClient.current = client;
@@ -63,7 +63,6 @@ export default function Connect() {
     client.connect({}, () => {
       client.subscribe("/topic/greetings", (msg) => {
         const bodyList = JSON.parse(msg.body);
-
         setMessages((prev) => [...prev, ...bodyList]);
 
         // DOM 렌더링이 반영된 후에 스크롤 처리
