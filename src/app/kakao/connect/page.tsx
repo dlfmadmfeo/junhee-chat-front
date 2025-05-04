@@ -23,8 +23,6 @@ export default function Connect() {
       setMessage("");
       return;
     }
-    // setMessages((prev) => [...prev, message]);
-
     if (!isFirst) {
       if (!message?.trim()) {
         return;
@@ -35,7 +33,7 @@ export default function Connect() {
 
     if (stompClient.current && stompClient.current.connected) {
       stompClient.current.send(
-        "/app/hello", // 서버의 @MessageMapping 경로에 메시지 전송
+        "/app/send", // 서버의 @MessageMapping 경로에 메시지 전송
         {},
         JSON.stringify({ content: message }) // 메시지 내용 전송
       );
@@ -55,7 +53,7 @@ export default function Connect() {
     }
   };
 
-  useEffect(() => {    
+  useEffect(() => {
     const socket = new SockJS(`${process.env.NEXT_PUBLIC_APP_FRONT_IP}/ws`);
     const client = Stomp.over(socket);
     stompClient.current = client;
@@ -78,7 +76,7 @@ export default function Connect() {
       });
 
       // 최초 입장 메시지 전송
-      client.send("/app/hello", {}, JSON.stringify({ content: "" }));
+      client.send("/app/send", {}, JSON.stringify({ content: "" }));
     });
 
     return () => {
@@ -148,32 +146,6 @@ export default function Connect() {
             </button>
           </div>
         </div>
-
-        {/* testing */}
-        {/* <div className="send absolute w-full bottom-[40px]">
-          <textarea
-            className={`resize-none w-full rounded-sm p-[8px] align-bottom h-[${BOTTOM_TEXTAREA_HEIGHT}px] hover:outline-red-100 border-none
-             focus:outline-none focus:ring-0 focus:border-none`}
-            placeholder="텍스트를 입력하세요."
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            onKeyUp={onKeyHandler}
-            autoFocus
-          ></textarea>
-        </div>
-        <div
-          className={`send-extra absolute w-full bg-white bottom-[0px] w-full h-[${BOTTOM_SEND_HEIGHT}px] flex items-center justify-end`}
-        >
-          <button
-            className={`${
-              message ? "bg-kakao" : "bg-gray-200"
-            } p-[8px] w-[64px] rounded`}
-            disabled={!message}
-            onClick={sendMessage}
-          >
-            전송
-          </button>
-        </div> */}
       </div>
     </>
   );

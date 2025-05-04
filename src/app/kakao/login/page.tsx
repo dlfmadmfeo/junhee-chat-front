@@ -1,8 +1,37 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { ChangeEvent, useState } from "react";
+import { userLogin, IUser } from "@/app/utils/api";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { userState } from "@/app/state/userState";
 
 export default function Login() {
   const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const setUser = useSetRecoilState(userState);
+
+  const login = async () => {
+    if (!email) {
+      alert("이메일을 입력하세요.");
+      return;
+    }
+    if (!password) {
+      alert("비밀번호를 입력하세요.");
+      return;
+    }
+
+    const user: IUser = {
+      password: password,
+      email: email,
+    };
+    const response: any = await userLogin(user);
+    console.log("response: ", response);
+    if (response.success) {
+      setUser(response.value);
+      router.push("/kakao/connect");
+    }
+  };
   return (
     <>
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -17,20 +46,28 @@ export default function Login() {
                 <input
                   type="text"
                   placeholder="이메일 또는 전화번호"
-                  className="w-[200px] p-2 text-sm"
+                  className="w-[60%] p-[12px] text-sm focus:outline-none"
+                  value={email}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    setEmail(e.target.value)
+                  }
                 />
               </div>
               <div>
                 <input
-                  type="text"
+                  type="password"
                   placeholder="비밀번호"
-                  className="w-[200px] p-2 text-sm"
+                  className="w-[60%] p-[12px] text-sm focus:outline-none"
+                  value={password}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    setPassword(e.target.value)
+                  }
                 />
               </div>
               <div className="submit mt-20">
                 <button
-                  className="bg-white w-[200px] pt-2 pb-2 text-sm hover:bg-gray-200"
-                  onClick={() => router.push("/kakao/connect")}
+                  className="bg-white w-[60%] p-[12px] text-md bg-gray-200 hover:bg-gray-300 rounded-md"
+                  onClick={login}
                 >
                   로그인
                 </button>
