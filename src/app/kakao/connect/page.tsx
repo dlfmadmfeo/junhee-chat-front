@@ -63,7 +63,7 @@ export default function Connect() {
     client.connect({}, () => {
       client.subscribe("/topic/greetings", (msg) => {
         const bodyList = JSON.parse(msg.body);
-        setMessages((prev) => [...prev, ...bodyList]);
+        setMessages([...bodyList]);
 
         // DOM 렌더링이 반영된 후에 스크롤 처리
         requestAnimationFrame(() => {
