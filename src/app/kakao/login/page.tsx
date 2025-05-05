@@ -2,14 +2,12 @@
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 import { userLogin, IUser } from "@/app/utils/api";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { userState } from "@/app/state/userState";
+import { userStore } from "@/store/userStore";
 
 export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const setUser = useSetRecoilState(userState);
 
   const login = async () => {
     if (!email) {
@@ -28,7 +26,9 @@ export default function Login() {
     const response: any = await userLogin(user);
     console.log("response: ", response);
     if (response.success) {
-      setUser(response.value);
+      userStore.getState().setUser({
+        email,
+      });
       router.push("/kakao/connect");
     }
   };

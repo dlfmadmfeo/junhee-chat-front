@@ -2,21 +2,31 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import SockJS from "sockjs-client/dist/sockjs.min.js";
 import { Stomp, Client } from "@stomp/stompjs";
+import { userStore } from "@/store/userStore";
 
 const BOTTOM_TEXTAREA_HEIGHT = 120;
 const BOTTOM_SEND_HEIGHT = 40;
 const BOTTOM_TOTAL_HEIGHT = BOTTOM_TEXTAREA_HEIGHT + BOTTOM_SEND_HEIGHT;
 
+const formatter = new Intl.DateTimeFormat("ko-KR", {
+  hour: "numeric",
+  minute: "numeric",
+  hour12: true, // 오전/오후
+});
+
+interface IMessageInfo {
+  email: string;
+  content: string;
+  dateTime: number;
+}
+
 export default function Connect() {
-  const [messages, setMessages] = useState<any[]>([]);
+  const [messageInfos, setMessageInfos] = useState<IMessageInfo[]>([]);
   const [message, setMessage] = useState("");
   const [isFirst, setIsFirst] = useState<boolean>(true);
-  const [isMe, setIsMe] = useState<boolean>(true);
 
   const stompClient = useRef<any>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
-
-  const openChat = () => {};
 
   const sendMessage = () => {
     if (!message?.trim()) {
@@ -31,11 +41,17 @@ export default function Connect() {
       setIsFirst(false);
     }
 
+    const messageInfo: IMessageInfo = {
+      email: userStore.getState().user?.email || "",
+      content: message,
+      dateTime: Date.now(),
+    };
+
     if (stompClient.current && stompClient.current.connected) {
       stompClient.current.send(
         "/app/send", // 서버의 @MessageMapping 경로에 메시지 전송
-        {},
-        JSON.stringify({ content: message }) // 메시지 내용 전송
+        {}, // 헤더 정보
+        JSON.stringify(messageInfo) // 메시지 내용 전송
       );
       setMessage(""); // 입력 필드를 비움.
     } else {
@@ -54,6 +70,8 @@ export default function Connect() {
   };
 
   useEffect(() => {
+    console.log("user: ", userStore.getState().user);
+
     const socket = new SockJS(`${process.env.NEXT_PUBLIC_APP_FRONT_IP}/ws`);
     const client = Stomp.over(socket);
     stompClient.current = client;
@@ -61,7 +79,8 @@ export default function Connect() {
     client.connect({}, () => {
       client.subscribe("/topic/greetings", (msg) => {
         const bodyList = JSON.parse(msg.body);
-        setMessages([...bodyList]);
+        console.log("bodyList: ", bodyList);
+        setMessageInfos([...bodyList]);
 
         // DOM 렌더링이 반영된 후에 스크롤 처리
         requestAnimationFrame(() => {
@@ -75,8 +94,14 @@ export default function Connect() {
         });
       });
 
+      const messageInfo: IMessageInfo = {
+        email: userStore.getState().user?.email || "",
+        content: "",
+        dateTime: Date.now(),
+      };
+
       // 최초 입장 메시지 전송
-      client.send("/app/send", {}, JSON.stringify({ content: "" }));
+      client.send("/app/send", {}, JSON.stringify(messageInfo));
     });
 
     return () => {
@@ -85,6 +110,10 @@ export default function Connect() {
       }
     };
   }, []);
+
+  const isMe = (email: string) => {
+    return userStore.getState().user?.email === email;
+  };
 
   return (
     <>
@@ -95,26 +124,37 @@ export default function Connect() {
           ref={contentRef}
         >
           <div className="messages">
-            {messages.map((message, i) => (
+            {messageInfos.map((messageInfo, i) => (
               <Fragment key={i}>
                 <div
                   className={`flex items-end ${
-                    isMe ? "justify-end" : "justify-start"
+                    isMe(messageInfo.email) ? "justify-end" : "justify-start"
                   } m-1 mt-2`}
                 >
                   <div
                     className={`${
-                      isMe ? "bg-kakao" : "bg-white"
-                    } max-w-[300px] break-all  p-[4px] pl-[8px] pr-[8px] rounded-sm order-2
+                      isMe(messageInfo.email) ? "bg-kakao" : "bg-white"
+                    } max-w-[300px] break-all  p-[4px] pl-[8px] pr-[8px] rounded-sm order-${
+                      isMe(messageInfo.email) ? 2 : 1
+                    }
                     } text-[14px]`}
                   >
-                    {message}
+                    {messageInfo.content}
                   </div>
                   <div
-                    className={`datetime text-gray-700 text-[11px] ml-1 mr-1 order-1
+                    className={`datetime text-gray-700 text-[11px] ml-1 mr-1 order-${
+                      isMe(messageInfo.email) ? 1 : 2
+                    }
                     }`}
                   >
-                    [오후] 7시 10분
+                    [
+                    {formatter.format(messageInfo.dateTime).includes("오전")
+                      ? "오전"
+                      : "오후"}
+                    ]{" "}
+                    {formatter
+                      .format(messageInfo.dateTime)
+                      .replace(/(오전|오후)\s*/, "")}
                   </div>
                 </div>
               </Fragment>
