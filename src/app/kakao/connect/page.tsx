@@ -150,18 +150,16 @@ export default function Connect() {
                 >
                   <div
                     className={`${
-                      isMe(messageInfo.email) ? "bg-kakao" : "bg-white"
-                    } max-w-[300px] break-all  p-[4px] pl-[8px] pr-[8px] rounded-sm order-${
-                      isMe(messageInfo.email) ? 2 : 1
-                    }
-                    } text-[14px]`}
+                      isMe(messageInfo.email)
+                        ? "bg-kakao order-2"
+                        : "bg-white max-w-[300px] break-all  p-[4px] pl-[8px] pr-[8px] rounded-sm order-1"
+                    } max-w-[300px] break-all  p-[4px] pl-[8px] pr-[8px] rounded-sm text-[14px]`}
                   >
                     {messageInfo.content}
                   </div>
                   <div
-                    className={`datetime text-gray-700 text-[11px] ml-1 mr-1 order-${
-                      isMe(messageInfo.email) ? 1 : 2
-                    }
+                    className={`datetime text-gray-700 text-[11px] ml-1 mr-1 ${
+                      isMe(messageInfo.email) ? "order-1" : "order-2"
                     }`}
                   >
                     {formatTime(messageInfo.dateTime)}
