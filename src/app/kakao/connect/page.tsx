@@ -21,6 +21,7 @@ interface IMessageInfo {
 }
 
 export default function Connect() {
+  const [isHydrated, setIsHydrated] = useState(false);
   const [messageInfos, setMessageInfos] = useState<IMessageInfo[]>([]);
   const [message, setMessage] = useState("");
   const [isFirst, setIsFirst] = useState<boolean>(true);
@@ -70,8 +71,10 @@ export default function Connect() {
   };
 
   useEffect(() => {
-    console.log("user: ", userStore.getState().user);
+    setIsHydrated(true); // client에서만 true
+  }, []);
 
+  useEffect(() => {
     const socket = new SockJS(`${process.env.NEXT_PUBLIC_APP_FRONT_IP}/ws`);
     const client = Stomp.over(socket);
     stompClient.current = client;
@@ -111,13 +114,27 @@ export default function Connect() {
     };
   }, []);
 
+  if (!isHydrated) {
+    return null; // 또는 로딩 스피너, 플레이스홀더 등
+  }
+
   const isMe = (email: string) => {
     return userStore.getState().user?.email === email;
+  };
+
+  const formatTime = (timestamp: number) => {
+    const formatted = formatter.format(timestamp);
+    const isAm = formatted.includes("오전");
+    const timeOnly = formatted.replace(/(오전|오후)\s*/, "");
+    return `[${isAm ? "오전" : "오후"}] ${timeOnly}`;
   };
 
   return (
     <>
       <div className="chat flex flex-col  h-screen bg-kakao-blue ">
+        <div className="absolute left-[50%]">
+          <div>이메일: {userStore?.getState()?.user?.email}</div>
+        </div>
         <div
           className={`content overflow-y-auto flex-1
           }`}
@@ -147,14 +164,7 @@ export default function Connect() {
                     }
                     }`}
                   >
-                    [
-                    {formatter.format(messageInfo.dateTime).includes("오전")
-                      ? "오전"
-                      : "오후"}
-                    ]{" "}
-                    {formatter
-                      .format(messageInfo.dateTime)
-                      .replace(/(오전|오후)\s*/, "")}
+                    {formatTime(messageInfo.dateTime)}
                   </div>
                 </div>
               </Fragment>
