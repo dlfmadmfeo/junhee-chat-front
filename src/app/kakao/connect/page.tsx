@@ -132,9 +132,6 @@ export default function Connect() {
   return (
     <>
       <div className="chat flex flex-col  h-screen bg-kakao-blue ">
-        <div className="absolute left-[50%]">
-          <div>이메일: {userStore?.getState()?.user?.email}</div>
-        </div>
         <div
           className={`content overflow-y-auto flex-1
           }`}
