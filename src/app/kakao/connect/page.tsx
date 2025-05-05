@@ -31,21 +31,6 @@ export default function Connect() {
   const stompClient = useRef<any>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
 
-  if (!isHydrated) {
-    return null; // 또는 로딩 스피너, 플레이스홀더 등
-  }
-
-  const isMe = (email: string) => {
-    return userStore.getState().user?.email === email;
-  };
-
-  const formatTime = (timestamp: number) => {
-    const formatted = formatter.format(timestamp);
-    const isAm = formatted.includes("오전");
-    const timeOnly = formatted.replace(/(오전|오후)\s*/, "");
-    return `[${isAm ? "오전" : "오후"}] ${timeOnly}`;
-  };
-
   const sendMessage = () => {
     if (!message?.trim()) {
       setMessage("");
@@ -162,6 +147,21 @@ export default function Connect() {
   useEffect(() => {
     setIsHydrated(true); // client에서만 true
   }, []);
+
+  if (!isHydrated) {
+    return null; // 또는 로딩 스피너, 플레이스홀더 등
+  }
+
+  const isMe = (email: string) => {
+    return userStore.getState().user?.email === email;
+  };
+
+  const formatTime = (timestamp: number) => {
+    const formatted = formatter.format(timestamp);
+    const isAm = formatted.includes("오전");
+    const timeOnly = formatted.replace(/(오전|오후)\s*/, "");
+    return `[${isAm ? "오전" : "오후"}] ${timeOnly}`;
+  };
 
   return (
     <>
