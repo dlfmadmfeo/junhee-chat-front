@@ -73,7 +73,7 @@ export default function Login() {
           </div>
           <div className="submit mt-20">
             <button
-              className="bg-white w-[100%] p-[14px] text-md bg-green-500 hover:bg-green-600 focus:outline-red-300 rounded-[8px] text-white"
+              className="w-[100%] p-[14px] text-md bg-green-500 hover:bg-green-600 focus:outline-red-300 rounded-[8px] text-white"
               onClick={login}
             >
               로그인
