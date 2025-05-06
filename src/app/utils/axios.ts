@@ -2,16 +2,10 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_APP_SERVER_IP,
-  //   withCredentials: true, // 필요한 경우
+  withCredentials: true, // 요청/응답에 쿠키 포함 여부
 });
 
-// 요청 인터셉터
 api.interceptors.request.use((config) => {
-  // 예: 토큰 붙이기
-  const token = localStorage.getItem("token");
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
   return config;
 });
 

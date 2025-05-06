@@ -9,6 +9,19 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // 쿠키에서 access-token 값을 추출하는 함수
+  const getAccessTokenFromCookie = () => {
+    console.log("document.cookie: ", document.cookie);    
+    const cookies = document.cookie.split("; ");
+    for (const cookie of cookies) {
+      const [name, value] = cookie.split("=");
+      if (name === "access-token") {
+        return value; // access-token 값을 반환
+      }
+    }
+    return null; // 없으면 null 반환
+  };
+
   const login = async () => {
     if (!email) {
       alert("이메일을 입력하세요.");
@@ -29,6 +42,8 @@ export default function Login() {
       userStore.getState().setUser({
         email,
       });
+      const accessToken = getAccessTokenFromCookie();
+      console.log("accessToken : ", accessToken );      
       router.push("/kakao/connect");
     }
   };
