@@ -32,47 +32,57 @@ export default function Login() {
       router.push("/kakao/connect");
     }
   };
+
+  const signUp = () => {
+    router.push("/kakao/signup");
+  };
+
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <div className="bg-kakao w-full h-screen sm:w-[400px] sm:h-[600px] text-center">
-          <div className="header w-full h-[10px]"></div>
-          <div className="image h-[200px] flex items-center justify-center">
+      <div className="h-screen flex items-center justify-center bg-gray-100">
+        <div className="bg-white p-8 rounded-xl shadow-md w-[100%] max-w-sm space-y-4">
+          {/* <div className="image h-[200px] flex items-center justify-center">
             <img src="/images/kakao-talk-1.png" alt="" height={80} width={80} />
+          </div> */}
+
+          <h2 className="text-xl font-semibold text-gray-700 text-center">
+            로그인
+          </h2>
+
+          <div className="mb-2">
+            <input
+              type="text"
+              placeholder="이메일"
+              className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-green-400"
+              value={email}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setEmail(e.target.value)
+              }
+            />
           </div>
-          <div className="center">
-            <div className="form">
-              <div className="mb-2">
-                <input
-                  type="text"
-                  placeholder="이메일 또는 전화번호"
-                  className="w-[60%] p-[12px] text-sm focus:outline-none"
-                  value={email}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    setEmail(e.target.value)
-                  }
-                />
-              </div>
-              <div>
-                <input
-                  type="password"
-                  placeholder="비밀번호"
-                  className="w-[60%] p-[12px] text-sm focus:outline-none"
-                  value={password}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    setPassword(e.target.value)
-                  }
-                />
-              </div>
-              <div className="submit mt-20">
-                <button
-                  className="bg-white w-[60%] p-[12px] text-md bg-gray-200 hover:bg-gray-300 rounded-md"
-                  onClick={login}
-                >
-                  로그인
-                </button>
-              </div>
-            </div>
+          <div>
+            <input
+              type="password"
+              placeholder="비밀번호"
+              className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-green-400"
+              value={password}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setPassword(e.target.value)
+              }
+            />
+          </div>
+          <div className="submit mt-20">
+            <button
+              className="bg-white w-[100%] p-[14px] text-md bg-green-500 hover:bg-green-600 focus:outline-red-300 rounded-[8px] text-white"
+              onClick={login}
+            >
+              로그인
+            </button>
+          </div>
+          <div className="mt-[4px]">
+            <button className="text-sm" onClick={signUp}>
+              회원가입
+            </button>
           </div>
         </div>
       </div>
