@@ -44,12 +44,12 @@ export default function Login() {
       });
       const accessToken = getAccessTokenFromCookie();
       console.log("accessToken : ", accessToken );      
-      router.push("/kakao/connect");
+      router.replace("/kakao/connect");
     }
   };
 
   const signUp = () => {
-    router.push("/kakao/signup");
+    router.replace("/kakao/signup");
   };
 
   return (

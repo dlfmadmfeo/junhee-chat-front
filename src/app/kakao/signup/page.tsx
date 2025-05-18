@@ -68,7 +68,7 @@ export default function SignUp() {
       console.log("response: ", response);      
       if (response.success) {
         alert("회원가입 완료.");
-        router.push("/kakao/login");
+        router.replace("/kakao/login");
       }
     }
   };
