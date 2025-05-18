@@ -3,9 +3,13 @@ import axios from "axios";
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_APP_SERVER_IP,
   withCredentials: true, // 요청/응답에 쿠키 포함 여부
+  headers: {
+    "Cache-Control": "no-cache",
+  },
 });
 
 api.interceptors.request.use((config) => {
+  config.headers['Cache-Control'] = 'no-cache';
   return config;
 });
 
