@@ -17,4 +17,5 @@ jobs:
           port: 22
           script: |
             cd /home/ec2-user/
+            chmod +x start-react-nextjs.sh
             ./start-react-nextjs.sh
