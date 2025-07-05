@@ -1,0 +1,21 @@
+name: 프론트 배포 ec2(3.39.20.157)
+on:
+  push:
+    branches: [master]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Connect to EC2 and run script
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: 3.39.20.157
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
+          script: |
+            cd /home/ec2-user/
+            chmod +x start-react-nextjs.sh
+            ./start-react-nextjs.sh
