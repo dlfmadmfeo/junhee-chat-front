@@ -95,7 +95,7 @@ export default function Login() {
             </button>
           </div>
           <div className="mt-[4px]">
-            <button className="text-sm" onClick={signUp}>
+            <button className="text-sm underline" onClick={signUp}>
               회원가입
             </button>
           </div>
