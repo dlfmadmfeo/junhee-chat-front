@@ -5,6 +5,7 @@ const api = axios.create({
   withCredentials: true, // 서로 다른 도메인에 대한 보안 허용 여부 (쿠키 전달 가능 여부)
   headers: {
     "Cache-Control": "no-cache",
+    "X-Local-Request": process.env.NEXT_PUBLIC_IS_LOCAL
   },
 });
 
