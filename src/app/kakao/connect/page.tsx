@@ -3,6 +3,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import SockJS from "sockjs-client/dist/sockjs.min.js";
 import { Stomp, Client } from "@stomp/stompjs";
 import { userStore } from "@/store/userStore";
+import { getUserList } from "@/app/utils/api";
 
 let retryTimeout: NodeJS.Timeout;
 
@@ -163,9 +164,17 @@ export default function Connect() {
     return `[${isAm ? "오전" : "오후"}] ${timeOnly}`;
   };
 
+  const onSearch = async () => {
+    console.log("[onSearch] document.cookie: ", document.cookie);
+    await getUserList();
+  };
+
   return (
     <>
       <div className="chat flex flex-col  h-screen bg-kakao-blue ">
+        <div>
+          <button onClick={onSearch}>조회</button>
+        </div>
         <div
           className={`content overflow-y-auto flex-1
           }`}
