@@ -18,8 +18,10 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/components/*": ["components/*"]
     },
+    "baseUrl": "./",
     "target": "ES2017"
   },
   "include": [
