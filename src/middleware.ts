@@ -5,6 +5,9 @@ export function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
   const urls = ["/kakao/login", "/kakao/signup"];
 
+  console.log("token: ", token);
+  console.log("pathname: ", pathname);
+
   if (!token && !urls.includes(pathname)) {
     return NextResponse.redirect(new URL("/kakao/login", req.url));
   }
