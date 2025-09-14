@@ -8,10 +8,11 @@ export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const setUser = userStore((state) => state.setUser);
 
   // 쿠키에서 access-token 값을 추출하는 함수
   const getAccessTokenFromCookie = () => {
-    console.log("document.cookie: ", document.cookie);    
+    console.log("document.cookie: ", document.cookie);
     const cookies = document.cookie.split("; ");
     for (const cookie of cookies) {
       const [name, value] = cookie.split("=");
@@ -37,13 +38,11 @@ export default function Login() {
       email: email,
     };
     const response: any = await userLogin(user);
-    console.log("response: ", response);
     if (response.success) {
-      userStore.getState().setUser({
+      setUser({
         email,
       });
       const accessToken = getAccessTokenFromCookie();
-      console.log("accessToken : ", accessToken );      
       router.replace("/kakao/connect");
     }
   };
