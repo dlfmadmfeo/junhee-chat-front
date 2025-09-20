@@ -6,8 +6,16 @@ const withBundleAnalyzer = createBundleAnalyzer({
 });
 
 const nextConfig = {
-    // output: "export",
-    distDir: "dist",
+  // output: "export",
+  distDir: 'dist',
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+      },
+    ],
+  },
 };
 
 export default withBundleAnalyzer(nextConfig);
