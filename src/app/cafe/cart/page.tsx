@@ -11,7 +11,7 @@ export default function CartDrawer() {
     <motion.div initial={{ y: 0 }} animate={{ y: 0 }} transition={{ duration: 0.3 }} className="fixed bottom-0 left-0 right-0 bg-white shadow-lg rounded-t-2xl p-4">
       <h2 className="text-lg font-bold mb-4">장바구니</h2>
 
-      <ul className="space-y-3 max-h-[400] overflow-y-auto">
+      <ul className="space-y-3 max-h-80 overflow-y-auto">
         <AnimatePresence>
           {items.map((item) => (
             <motion.li key={item.id} exit={{ opacity: 0, x: -20 }} className="flex justify-between items-center border-b py-3 hover:bg-gray-50 rounded">
