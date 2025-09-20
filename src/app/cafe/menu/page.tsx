@@ -4,6 +4,7 @@ import menuList from '@/data/cartItems.json';
 import { CartItem } from '@/app/types/cart';
 import { useToastStore } from '@/store/toastStore';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function MenuPage() {
   const { addItem, items } = useCartStore();
@@ -39,9 +40,9 @@ export default function MenuPage() {
         </Link>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
-        {menuList.map((menu) => (
+        {menuList.map((menu, i) => (
           <div key={menu.id} className="border rounded-lg p-3 shadow-sm hover:shadow-md transition">
-            <img src={menu.imageUrl} alt={menu.name} className="w-full h-32 object-cover rounded" />
+            <Image src={menu.imageUrl} alt={menu.name} className="w-full h-32 object-cover rounded" width={200} height={200} priority={i < 4} />
             <h2 className="mt-2 font-medium">{menu.name}</h2>
             <p className="text-gray-500">{menu.price.toLocaleString()} 원</p>
             <button onClick={() => addItemHandler(menu)} className="w-full mt-2 py-1 bg-blue-500 text-white rounded-lg">

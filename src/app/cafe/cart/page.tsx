@@ -2,6 +2,7 @@
 
 import { useCartStore } from '@/store/cartStore';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 export default function CartDrawer() {
   const { items, removeItem, increment, decrement } = useCartStore();
@@ -13,11 +14,11 @@ export default function CartDrawer() {
 
       <ul className="space-y-3 max-h-80 overflow-y-auto">
         <AnimatePresence>
-          {items.map((item) => (
+          {items.map((item, i) => (
             <motion.li key={item.id} exit={{ opacity: 0, x: -20 }} className="flex justify-between items-center border-b py-3 hover:bg-gray-50 rounded">
               {/* 왼쪽: 썸네일 + 상품명 + 가격 */}
               <div className="flex items-center gap-3">
-                {item.imageUrl && <img src={item.imageUrl} className="w-12 h-12 object-cover rounded" />}
+                {item.imageUrl && <Image src={item.imageUrl} className="w-12 h-12 object-cover rounded" alt={''} width={200} height={200} priority={i < 4} />}
                 <div>
                   <p className="font-medium">{item.name}</p>
                   <p className="text-sm text-gray-500">{(item.price * item.quantity).toLocaleString()} 원</p>
