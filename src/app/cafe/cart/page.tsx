@@ -1,7 +1,7 @@
 'use client';
 
 import { MenuOption } from '@/app/types/cart';
-import { buildCartKey, useCartStore } from '@/store/cartStore';
+import { useCartStore } from '@/store/cartStore';
 import { HomeIcon } from '@heroicons/react/16/solid';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
@@ -20,11 +20,7 @@ export default function CartDrawer() {
         <ul className="space-y-3 max-h-80 overflow-y-auto">
           <AnimatePresence>
             {items.map((item, index) => (
-              <motion.li
-                key={buildCartKey(item.id, item.options)}
-                exit={{ opacity: 0, x: -20 }}
-                className="flex justify-between items-center border-b py-3 hover:bg-gray-50 rounded"
-              >
+              <motion.li key={index} exit={{ opacity: 0, x: -20 }} className="flex justify-between items-center border-b py-3 hover:bg-gray-50 rounded">
                 {/* 왼쪽: 썸네일 + 상품명 + 가격 */}
                 <div className="flex items-center gap-3">
                   {item.imageUrl && <Image src={item.imageUrl} className="w-12 h-12 object-cover rounded" alt={''} width={200} height={200} priority={index < 4} />}
