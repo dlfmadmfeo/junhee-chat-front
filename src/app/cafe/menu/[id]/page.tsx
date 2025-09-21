@@ -6,7 +6,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { CartItem, MenuOption } from '@/app/types/cart';
 import Image from 'next/image';
 import { useToastStore } from '@/store/toastStore';
-import { HomeIcon } from '@heroicons/react/16/solid';
+import { HomeIcon } from '@heroicons/react/24/outline';
 
 export default function MenuDetailPage() {
   const { id } = useParams();
@@ -37,6 +37,13 @@ export default function MenuDetailPage() {
     addItem({
       ...menu,
       quantity: quantity,
+      options: menu.options.map((opt: MenuOption) => {
+        const values: string[] = selectedOption[opt.name] || [];
+        return {
+          ...opt,
+          values: [...values],
+        };
+      }),
     });
     router.push('/cafe/cart'); // 장바구니로 이동
   };
@@ -57,11 +64,6 @@ export default function MenuDetailPage() {
 
   return (
     <div className="">
-      <div className="flex justify-between">
-        <button onClick={() => router.push('/cafe/menu')} className="flex items-center gap-2  rounded-lg hover:bg-gray-200 cursor-pointer text-md">
-          <HomeIcon className="w-10 h-10" />
-        </button>
-      </div>
       <div className="space-y-6">
         <Image src={menu.imageUrl || ''} alt={menu.name} width={500} height={500} priority className="w-full h-60 object-cover rounded" />
         <h1 className="text-2xl font-bold">{menu.name}</h1>

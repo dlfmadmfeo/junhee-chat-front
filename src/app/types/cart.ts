@@ -15,5 +15,5 @@ export interface CartItem {
   price: number; // 가격
   quantity: number; // 개수
   imageUrl?: string;
-  options?: MenuOption[];
+  options: MenuOption[];
 }
