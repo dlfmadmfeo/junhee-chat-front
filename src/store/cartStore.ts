@@ -63,7 +63,7 @@ export const useCartStore = create<CartState>()(
   ),
 );
 
-function buildCartKey(id: number, options: MenuOption[]): string {
+export function buildCartKey(id: number, options: MenuOption[]): string {
   // 옵션 정규화 (순서 보장)
   const normalized = options
     .map((o) => `${o.name}:${o.values.sort().join(',')}`)
