@@ -28,7 +28,7 @@ export default function MenuPage() {
   };
 
   return (
-    <div className="p-6">
+    <div className="">
       <div className="flex justify-between">
         <h1 className="text-2xl font-bold mb-4">메뉴판</h1>
         {/* 장바구니 */}

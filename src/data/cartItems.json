@@ -5,7 +5,22 @@
     "type": "COFFEE",
     "price": 3000,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG",
+    "options": [
+      {
+        "name": "temperature",
+        "label": "온도",
+        "type": "SINGLE",
+        "values": ["ICE", "HOT"],
+        "required": true
+      },
+      {
+        "name": "syrup",
+        "label": "시럽",
+        "type": "MULTI",
+        "values": ["바닐라", "카라멜", "헤이즐넛"]
+      }
+    ]
   },
   {
     "id": 2,
@@ -13,7 +28,22 @@
     "type": "COFFEE",
     "price": 4000,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Cafe_Latte.jpg"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Cafe_Latte.jpg",
+    "options": [
+      {
+        "name": "temperature",
+        "label": "온도",
+        "type": "SINGLE",
+        "values": ["ICE", "HOT"],
+        "required": true
+      },
+      {
+        "name": "syrup",
+        "label": "시럽",
+        "type": "MULTI",
+        "values": ["바닐라", "카라멜", "헤이즐넛"]
+      }
+    ]
   },
   {
     "id": 3,
@@ -21,7 +51,16 @@
     "type": "COFFEE",
     "price": 4200,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Cappuccino_at_Sightglass_Coffee.jpg"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Cappuccino_at_Sightglass_Coffee.jpg",
+    "options": [
+      {
+        "name": "temperature",
+        "label": "온도",
+        "type": "SINGLE",
+        "values": ["ICE", "HOT"],
+        "required": true
+      }
+    ]
   },
   {
     "id": 4,
@@ -29,7 +68,22 @@
     "type": "COFFEE",
     "price": 4800,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Latte_Macchiato_%281%29.jpg"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Latte_Macchiato_%281%29.jpg",
+    "options": [
+      {
+        "name": "temperature",
+        "label": "온도",
+        "type": "SINGLE",
+        "values": ["ICE", "HOT"],
+        "required": true
+      },
+      {
+        "name": "syrup",
+        "label": "시럽",
+        "type": "MULTI",
+        "values": ["카라멜"]
+      }
+    ]
   },
   {
     "id": 5,
@@ -37,7 +91,22 @@
     "type": "COFFEE",
     "price": 4500,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Vanilla_Latte_%285339583568%29.jpg"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Vanilla_Latte_%285339583568%29.jpg",
+    "options": [
+      {
+        "name": "temperature",
+        "label": "온도",
+        "type": "SINGLE",
+        "values": ["ICE", "HOT"],
+        "required": true
+      },
+      {
+        "name": "syrup",
+        "label": "시럽",
+        "type": "MULTI",
+        "values": ["바닐라"]
+      }
+    ]
   },
   {
     "id": 6,
@@ -45,7 +114,16 @@
     "type": "COFFEE",
     "price": 3500,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/df/Cold_Brew_Coffee.jpg"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/df/Cold_Brew_Coffee.jpg",
+    "options": [
+      {
+        "name": "temperature",
+        "label": "온도",
+        "type": "SINGLE",
+        "values": ["ICE"],
+        "required": true
+      }
+    ]
   },
   {
     "id": 7,
@@ -53,7 +131,16 @@
     "type": "DRINK",
     "price": 5500,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Strawberry_smoothie.png"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Strawberry_smoothie.png",
+    "options": [
+      {
+        "name": "temperature",
+        "label": "온도",
+        "type": "SINGLE",
+        "values": ["ICE"],
+        "required": true
+      }
+    ]
   },
   {
     "id": 8,
@@ -61,7 +148,16 @@
     "type": "DRINK",
     "price": 5000,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Mango_Smoothie.JPG"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Mango_Smoothie.JPG",
+    "options": [
+      {
+        "name": "temperature",
+        "label": "온도",
+        "type": "SINGLE",
+        "values": ["ICE"],
+        "required": true
+      }
+    ]
   },
   {
     "id": 9,
@@ -69,7 +165,16 @@
     "type": "DESERT",
     "price": 6000,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Chocolate_Cake_%28Unsplash%29.jpg"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Chocolate_Cake_%28Unsplash%29.jpg",
+    "options": [
+      {
+        "name": "packaging",
+        "label": "포장 여부",
+        "type": "SINGLE",
+        "values": ["매장", "포장"],
+        "required": true
+      }
+    ]
   },
   {
     "id": 10,
@@ -77,6 +182,15 @@
     "type": "DESERT",
     "price": 6500,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/de/CHEESE_CAKE.JPG"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/de/CHEESE_CAKE.JPG",
+    "options": [
+      {
+        "name": "packaging",
+        "label": "포장 여부",
+        "type": "SINGLE",
+        "values": ["매장", "포장"],
+        "required": true
+      }
+    ]
   }
 ]

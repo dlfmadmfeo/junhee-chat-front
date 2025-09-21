@@ -14,20 +14,20 @@ export default function CartDrawer() {
   return (
     <div>
       <div className="flex justify-between">
-        <button onClick={() => router.push('/cafe/menu')} className="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-200 cursor-pointer text-md">
-          <HomeIcon className="w-8 h-8" /> <span>처음으로</span>
+        <button onClick={() => router.push('/cafe/menu')} className="flex items-center gap-2 rounded-lg hover:bg-gray-200 cursor-pointer text-md">
+          <HomeIcon className="w-10 h-10" />
         </button>
       </div>
-      <motion.div initial={{ y: 0 }} animate={{ y: 0 }} transition={{ duration: 0.3 }} className="fixed bottom-0 left-0 right-0 bg-white shadow-lg rounded-t-2xl p-4">
+      <motion.div initial={{ y: 0 }} animate={{ y: 0 }} transition={{ duration: 0.3 }} className="fixed bottom-0 left-0 right-0 bg-white shadow-lg rounded-t-2xl p-6">
         <h2 className="text-lg font-bold mb-4">장바구니</h2>
 
         <ul className="space-y-3 max-h-80 overflow-y-auto">
           <AnimatePresence>
-            {items.map((item, i) => (
-              <motion.li key={item.id} exit={{ opacity: 0, x: -20 }} className="flex justify-between items-center border-b py-3 hover:bg-gray-50 rounded">
+            {items.map((item, index) => (
+              <motion.li key={index} exit={{ opacity: 0, x: -20 }} className="flex justify-between items-center border-b py-3 hover:bg-gray-50 rounded">
                 {/* 왼쪽: 썸네일 + 상품명 + 가격 */}
                 <div className="flex items-center gap-3">
-                  {item.imageUrl && <Image src={item.imageUrl} className="w-12 h-12 object-cover rounded" alt={''} width={200} height={200} priority={i < 4} />}
+                  {item.imageUrl && <Image src={item.imageUrl} className="w-12 h-12 object-cover rounded" alt={''} width={200} height={200} priority={index < 4} />}
                   <div>
                     <p className="font-medium">{item.name}</p>
                     <p className="text-sm text-gray-500">{(item.price * item.quantity).toLocaleString()} 원</p>

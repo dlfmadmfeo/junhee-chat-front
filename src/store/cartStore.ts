@@ -17,14 +17,23 @@ export const useCartStore = create<CartState>()(
       items: [],
       addItem: (item) =>
         set((state) => {
-          const cartItem = state.items.find((i) => i.id === item.id);
-          if (cartItem) {
-            return {
-              items: state.items.map((i) => (i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i)),
+          // 옵션 비교를 위해 JSON 문자열화
+          const existingIndex = state.items.findIndex((i) => i.id === item.id && JSON.stringify(i.options) === JSON.stringify(item.options));
+
+          if (existingIndex !== -1) {
+            // 동일한 옵션의 같은 메뉴가 있으면 수량만 증가
+            const updatedItems = [...state.items];
+            updatedItems[existingIndex] = {
+              ...updatedItems[existingIndex],
+              quantity: updatedItems[existingIndex].quantity + item.quantity,
             };
+            return { items: updatedItems };
           }
-          return { items: [...state.items, { ...item, quantity: item.quantity }] };
+
+          // 없으면 새로 추가
+          return { items: [...state.items, { ...item }] };
         }),
+
       removeItem: (id) =>
         set((state) => ({
           items: state.items.filter((i) => i.id !== id),
