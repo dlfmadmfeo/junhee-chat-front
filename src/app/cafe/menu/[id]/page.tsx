@@ -20,16 +20,20 @@ export default function MenuDetailPage() {
   if (!menu) return <div>메뉴를 찾을 수 없습니다.</div>;
 
   const addItemHandler = (menu: CartItem) => {
-    const isValid = menu.options
-      ?.filter((opt) => opt.required)
-      .every((opt) => {
-        const values: string[] = selectedOption[opt.name] || [];
-        if (values.length === 0) {
-          notify(`${opt.label}을(를) 선택해 주세요.`);
-          return false;
-        }
-        return true;
-      });
+    const isValid =
+      menu.options && menu.options.length > 0
+        ? menu.options
+            .filter((opt) => opt.required)
+            .every((opt) => {
+              const values = selectedOption[opt.name] || [];
+              if (values.length === 0) {
+                notify(`${opt.label}을(를) 선택해 주세요.`);
+                return false;
+              }
+              return true;
+            })
+        : true; // 옵션이 없으면 항상 유효
+
     if (!isValid) {
       return;
     }
