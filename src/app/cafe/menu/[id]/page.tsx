@@ -6,6 +6,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { CartItem } from '@/app/types/cart';
 import Image from 'next/image';
 import { useToastStore } from '@/store/toastStore';
+import { HomeIcon } from '@heroicons/react/16/solid';
 
 export default function MenuDetailPage() {
   const { id } = useParams();
@@ -31,12 +32,12 @@ export default function MenuDetailPage() {
   return (
     <div className="p-6 space-y-6">
       <div className="flex justify-between">
-        <button onClick={() => router.push('/cafe/menu')} className="p-4 rounded-lg bg-gray-200 hover:bg-gray-300 cursor-pointer text-md">
-          🏠 처음으로
+        <button onClick={() => router.push('/cafe/menu')} className="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-200 cursor-pointer text-md">
+          <HomeIcon className="w-8 h-8" /> <span>처음으로</span>
         </button>
       </div>
 
-      <Image src={menu.imageUrl} alt={menu.name} width={1000} height={1000} priority className="w-full h-60 object-cover rounded" />
+      <Image src={menu.imageUrl} alt={menu.name} width={500} height={500} priority className="w-full h-60 object-cover rounded" />
       <h1 className="text-2xl font-bold">{menu.name}</h1>
       <p className="text-gray-500">{menu.price.toLocaleString()} 원</p>
 
