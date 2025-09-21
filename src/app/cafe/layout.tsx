@@ -13,8 +13,7 @@ export default function CafeLayout({
   return (
     <>
       {path !== '/cafe/menu' && (
-        <div className="relative">
-          {/* <div className="bg-blue-100 h-[360] w-full absolute top-0 left-0 -z-10" /> */}
+        <div>
           <div className="pl-6 pt-6">
             <button onClick={() => router.push('/cafe/menu')} className="flex items-center gap-2 rounded-lg bg-gray-100 px-4 py-2 hover:bg-gray-200 cursor-pointer text-md shadow">
               <HomeIcon className="w-8 h-8 text-gray-700" />
