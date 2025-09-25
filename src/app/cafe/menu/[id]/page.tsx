@@ -67,7 +67,7 @@ export default function MenuDetailPage() {
   };
 
   return (
-    <div className="">
+    <div className="pb-32">
       <div className="space-y-6">
         <Image src={menu.imageUrl || ''} alt={menu.name} width={500} height={500} priority className="w-full h-60 object-cover rounded" />
         <h1 className="text-2xl font-bold">{menu.name}</h1>
