@@ -49,7 +49,9 @@ export default function MenuDetailPage() {
         };
       }),
     });
-    router.push('/cafe/cart'); // 장바구니로 이동
+
+    notify(`장바구니에 ${menu.name}을(를) 담았습니다.`);
+    router.push('/cafe/menu'); // 장바구니로 이동
   };
 
   const changeOptionHandler = (option: MenuOption, value: string) => {

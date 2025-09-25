@@ -138,7 +138,7 @@
         "label": "온도",
         "type": "SINGLE",
         "values": ["ICE"],
-        "required": true
+        "required": false
       }
     ]
   },
@@ -155,7 +155,7 @@
         "label": "온도",
         "type": "SINGLE",
         "values": ["ICE"],
-        "required": true
+        "required": false
       }
     ]
   },
