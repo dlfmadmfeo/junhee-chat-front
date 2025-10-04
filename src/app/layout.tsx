@@ -2,6 +2,7 @@ import './globals.css';
 import Head from 'next/head';
 import Toast from '@/components/Toast';
 import { Metadata } from 'next';
+import NetworkBanner from '@/components/NetworkBanner';
 
 export const metadata: Metadata = {
   title: '채팅앱/카페앱',
@@ -23,6 +24,7 @@ export default function RootLayout({
       </Head>
       <body>
         {children} <Toast />
+        <NetworkBanner />
       </body>
     </html>
   );
