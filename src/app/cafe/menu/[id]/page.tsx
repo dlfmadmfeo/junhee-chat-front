@@ -86,7 +86,7 @@ export default function MenuDetailPage() {
                     <button
                       key={val}
                       onClick={() => changeOptionHandler(opt, val)}
-                      className={`px-4 py-2 rounded-lg border ${isSelected ? 'bg-blue-500 text-white border-blue-500' : 'bg-gray-100 border-gray-300'}`}
+                      className={`px-4 py-2 rounded-lg border ${isSelected ? 'bg-blue-500 text-white border-blue-500' : 'bg-gray-100 border-gray-300 hover:bg-blue-200'}`}
                     >
                       {val}
                     </button>
