@@ -18,7 +18,7 @@ export default function MenuPage() {
   const tabList: { type: MenuType; label: string }[] = [
     { type: 'COFFEE', label: '커피' },
     { type: 'DRINK', label: '음료' },
-    { type: 'DESERT', label: '디저트' },
+    { type: 'DESSERT', label: '디저트' },
     { type: 'ALL', label: '전체' },
   ];
 

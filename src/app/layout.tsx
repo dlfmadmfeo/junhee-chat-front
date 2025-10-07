@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Toast from '@/components/Toast';
 import { Metadata } from 'next';
 import NetworkBanner from '@/components/NetworkBanner';
+import ReactQueryProvider from './providers/ReactQueryProvider';
 
 export const metadata: Metadata = {
   title: '채팅앱/카페앱',
@@ -23,8 +24,10 @@ export default function RootLayout({
         <meta name="keywords" content="ChatApp, 채팅, 실시간" />
       </Head>
       <body>
-        {children} <Toast />
-        <NetworkBanner />
+        <ReactQueryProvider>
+          {children} <Toast />
+          <NetworkBanner />
+        </ReactQueryProvider>
       </body>
     </html>
   );

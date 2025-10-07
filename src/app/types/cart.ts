@@ -1,4 +1,4 @@
-export type MenuType = 'ALL' | 'COFFEE' | 'DRINK' | 'DESERT';
+export type MenuType = 'ALL' | 'COFFEE' | 'DRINK' | 'DESSERT';
 
 export type MenuOption = {
   name: string;
