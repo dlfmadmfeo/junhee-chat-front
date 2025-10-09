@@ -19,13 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <Head>
-        <meta name="author" content="조준희" />
-        <meta name="keywords" content="ChatApp, 채팅, 실시간" />
-      </Head>
       <body>
         <ReactQueryProvider>
-          {children} <Toast />
+          {children}
+          <Toast />
           <NetworkBanner />
         </ReactQueryProvider>
       </body>
