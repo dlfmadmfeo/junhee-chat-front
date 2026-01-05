@@ -9,7 +9,7 @@ type Menu = {
   id: number;
   menuCode: string;
   name: string;
-  type: string;
+  type: 'COFFEE' | 'DRINK' | 'FOOD'; // 확장 가능
   price: number;
   imageUrl?: string | null;
   description?: string | null;
