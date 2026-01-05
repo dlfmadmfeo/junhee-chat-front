@@ -1,5 +1,9 @@
 import { Metadata } from 'next';
 import CafeHeader from './CafeHeader';
+import UserLayout from './(user)/layout';
+import AdminLayout from './admin/layout';
+
+type Role = 'ADMIN' | 'USER';
 
 export const metadata: Metadata = {
   title: '준희의 카페',
@@ -13,10 +17,11 @@ export default function CafeLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const role: Role = 'USER';
   return (
     <>
       <CafeHeader />
-      <div className="p-6">{children}</div>
+      <div className="p-6">{role === 'USER' ? <UserLayout>{children}</UserLayout> : <AdminLayout>{children}</AdminLayout>}</div>
     </>
   );
 }

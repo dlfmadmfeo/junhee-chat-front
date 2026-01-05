@@ -1,7 +1,7 @@
 'use client';
 import { useCartStore } from '@/store/cartStore';
-import menuList from '@/data/cartItems.json';
-import { CartItem, MenuType } from '@/app/types/cart';
+import menuList from '@/data/menuList.json';
+import { Menu, MenuType } from '@/app/types/menu';
 import { useToastStore } from '@/store/toastStore';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -22,7 +22,7 @@ export default function MenuPage() {
     { type: 'ALL', label: '전체' },
   ];
 
-  const addItemHandler = (menu: CartItem) => {
+  const addItemHandler = (menu: Menu) => {
     addItem({ ...menu, quantity: 1 });
     notify('장바구니에 담았어요');
   };
@@ -69,8 +69,8 @@ export default function MenuPage() {
         {menuList
           .filter((menu) => (activeType === 'ALL' ? true : menu.type === activeType))
           .map((menu, i) => (
-            <div key={menu.id} className="border rounded-lg p-3 shadow-sm hover:shadow-md transition cursor-pointer" onClick={() => router.push(`/cafe/menu/${menu.id}`)}>
-              <Image src={menu.imageUrl} alt={menu.name} className="w-full h-32 object-cover rounded" width={200} height={200} priority={i < 4} />
+            <div key={menu.id} className="group border rounded-lg p-3 shadow-sm hover:shadow-md transition cursor-pointer" onClick={() => router.push(`/cafe/menu/${menu.id}`)}>
+              <Image src={menu.imageUrl} alt={menu.name} className="w-full h-32 object-cover rounded group-hover:scale-105" width={200} height={200} priority={i < 4} />
               <h2 className="mt-2 font-medium">{menu.name}</h2>
               <p className="text-gray-500">{menu.price.toLocaleString()} 원</p>
               {/* <button onClick={() => addItemHandler(menu)} className="w-full mt-2 py-1 bg-blue-500 text-white rounded-lg">

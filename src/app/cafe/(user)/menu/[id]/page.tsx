@@ -1,9 +1,9 @@
 'use client';
 import { useState } from 'react';
 import { useCartStore } from '@/store/cartStore';
-import menuList from '@/data/cartItems.json';
+import menuList from '@/data/menuList.json';
 import { useParams, useRouter } from 'next/navigation';
-import { CartItem, MenuOption } from '@/app/types/cart';
+import { Menu, MenuOption } from '@/app/types/menu';
 import Image from 'next/image';
 import { useToastStore } from '@/store/toastStore';
 import { HomeIcon } from '@heroicons/react/24/outline';
@@ -13,13 +13,13 @@ export default function MenuDetailPage() {
   const router = useRouter();
   const { addItem } = useCartStore();
   const { notify } = useToastStore();
-  const menu: CartItem = menuList.find((m) => m.id.toString() === id) as CartItem;
+  const menu: Menu = menuList.find((m) => m.id.toString() === id) as Menu;
   const [quantity, setQuantity] = useState(1);
   const [selectedOption, setSelectedOption] = useState<Record<string, string[]>>({});
 
   if (!menu) return <div>메뉴를 찾을 수 없습니다.</div>;
 
-  const addItemHandler = (menu: CartItem) => {
+  const addItemHandler = (menu: Menu) => {
     const isValid =
       menu.options && menu.options.length > 0
         ? menu.options

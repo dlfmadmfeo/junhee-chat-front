@@ -1,10 +1,10 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { CartItem, MenuOption } from '@/app/types/cart';
+import { Menu, MenuOption } from '@/app/types/menu';
 
 interface CartState {
-  items: CartItem[];
-  addItem: (item: CartItem) => void;
+  items: Menu[];
+  addItem: (item: Menu) => void;
   removeItem: (id: number, options: MenuOption[]) => void;
   clear: () => void;
   increment: (id: number, options: MenuOption[]) => void;

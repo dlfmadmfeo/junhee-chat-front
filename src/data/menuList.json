@@ -162,7 +162,7 @@
   {
     "id": 9,
     "name": "초콜릿 케이크",
-    "type": "DESERT",
+    "type": "DESSERT",
     "price": 6000,
     "quantity": 1,
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Chocolate_Cake_%28Unsplash%29.jpg",
@@ -179,7 +179,7 @@
   {
     "id": 10,
     "name": "치즈케이크",
-    "type": "DESERT",
+    "type": "DESSERT",
     "price": 6500,
     "quantity": 1,
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/de/CHEESE_CAKE.JPG",

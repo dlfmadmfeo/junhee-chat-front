@@ -1,6 +1,6 @@
 'use client';
 
-import { MenuOption } from '@/app/types/cart';
+import { MenuOption } from '@/app/types/menu';
 import { useCartStore } from '@/store/cartStore';
 import { HomeIcon } from '@heroicons/react/16/solid';
 import { motion, AnimatePresence } from 'framer-motion';
