@@ -2,6 +2,7 @@
 
 import { MenuOption } from '@/app/types/menu';
 import { useCartStore } from '@/store/cartStore';
+import { useToastStore } from '@/store/toastStore';
 import { HomeIcon } from '@heroicons/react/16/solid';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
@@ -9,8 +10,17 @@ import { useRouter } from 'next/navigation';
 
 export default function CartDrawer() {
   const { items, removeItem, increment, decrement } = useCartStore();
+  const { notify } = useToastStore();
   const totalCost = items.reduce((sum, i) => sum + i.price * i.quantity, 0).toLocaleString();
   const router = useRouter();
+  const isItemEmpty: boolean = items.length === 0;
+  const pay = () => {
+    if (isItemEmpty) {
+      notify('메뉴를 장바구니에 추가해주세요.');
+      return;
+    }
+    router.push('/cafe/checkout');
+  };
 
   return (
     <div>
@@ -68,7 +78,9 @@ export default function CartDrawer() {
           <span>{totalCost} 원</span>
         </div>
 
-        <button className="w-full mt-3 py-3 bg-blue-500 text-white rounded-lg">결제하기</button>
+        <button className="w-full mt-3 py-3 bg-blue-500 text-white rounded-lg" onClick={pay}>
+          결제하기
+        </button>
       </motion.div>
     </div>
   );
