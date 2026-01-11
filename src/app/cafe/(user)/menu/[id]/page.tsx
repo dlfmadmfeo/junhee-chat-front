@@ -98,7 +98,13 @@ export default function MenuDetailPage() {
         })}
 
         <div className="p-6 fixed bottom-0 left-0 right-0 bg-white">
-          <button onClick={() => addItemHandler(menu)} className="w-full mt-3 py-3 bg-blue-500 text-white rounded-lg">
+          <button
+            onClick={() => {
+              alert('testing...');
+              addItemHandler(menu);
+            }}
+            className="w-full mt-3 py-3 bg-blue-500 text-white rounded-lg"
+          >
             담기
           </button>
         </div>
