@@ -102,6 +102,9 @@ export default function MenuDetailPage() {
             onClick={() => {
               addItemHandler(menu);
             }}
+            onTouchStart={() => {
+              addItemHandler(menu);
+            }}
             className="w-full mt-3 py-3 bg-blue-500 text-white rounded-lg"
           >
             담기
