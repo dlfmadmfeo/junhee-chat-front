@@ -60,7 +60,7 @@ export default function CheckoutPage() {
     // 키오스크 특성상 결제 성공 후 장바구니 비우고 홈으로 이동(또는 완료화면)
     setTimeout(() => {
       clear?.(); // clear가 없다면 아래 2) 참고
-      router.push('/');
+      router.push('/cafe/menu');
     }, 1200);
   };
 
@@ -291,7 +291,7 @@ export default function CheckoutPage() {
           <div className="w-full max-w-md bg-white rounded-2xl shadow-lg border">
             <div className="px-6 py-8 text-center">
               <div className="text-2xl font-extrabold">결제 완료</div>
-              <div className="text-sm text-gray-500 mt-2">{payMethod ? PayMethodLabel(payMethod) : ''} 결제가 완료되었습니다. (목업)</div>
+              <div className="text-sm text-gray-500 mt-2">{payMethod ? PayMethodLabel(payMethod) : ''} 결제가 완료되었습니다.</div>
               <div className="mt-6 text-lg font-bold">{formatKRW(totals.total)}원</div>
               <div className="text-xs text-gray-500 mt-3">잠시 후 홈으로 이동합니다.</div>
             </div>
