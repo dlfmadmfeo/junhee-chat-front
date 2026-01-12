@@ -5,7 +5,7 @@
     "type": "COFFEE",
     "price": 3000,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG",
+    "imageUrl": "/images/menu/cafe_americano.jpg",
     "options": [
       {
         "name": "temperature",
@@ -28,7 +28,7 @@
     "type": "COFFEE",
     "price": 4000,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Cafe_Latte.jpg",
+    "imageUrl": "/images/menu/cafe_cafelatte.jpg",
     "options": [
       {
         "name": "temperature",
@@ -51,7 +51,7 @@
     "type": "COFFEE",
     "price": 4200,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Cappuccino_at_Sightglass_Coffee.jpg",
+    "imageUrl": "/images/menu/cafe_cappuccino.jpg",
     "options": [
       {
         "name": "temperature",
@@ -68,7 +68,7 @@
     "type": "COFFEE",
     "price": 4800,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Latte_Macchiato_%281%29.jpg",
+    "imageUrl": "/images/menu/cafe_macchiato.jpg",
     "options": [
       {
         "name": "temperature",
@@ -91,7 +91,7 @@
     "type": "COFFEE",
     "price": 4500,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Vanilla_Latte_%285339583568%29.jpg",
+    "imageUrl": "/images/menu/cafe_vanilla_latte.jpg",
     "options": [
       {
         "name": "temperature",
@@ -114,7 +114,7 @@
     "type": "COFFEE",
     "price": 3500,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/df/Cold_Brew_Coffee.jpg",
+    "imageUrl": "/images/menu/cafe_cold_brew.jpg",
     "options": [
       {
         "name": "temperature",
@@ -131,7 +131,7 @@
     "type": "DRINK",
     "price": 5500,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Strawberry_smoothie.png",
+    "imageUrl": "/images/menu/cafe_smoothie_strawberry.jpg",
     "options": [
       {
         "name": "temperature",
@@ -148,7 +148,7 @@
     "type": "DRINK",
     "price": 5000,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Mango_Smoothie.JPG",
+    "imageUrl": "/images/menu/cafe_mango_juice.jpg",
     "options": [
       {
         "name": "temperature",
@@ -165,7 +165,7 @@
     "type": "DESSERT",
     "price": 6000,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Chocolate_Cake_%28Unsplash%29.jpg",
+    "imageUrl": "/images/menu/cafe_chocolate_cake.jpg",
     "options": [
       {
         "name": "packaging",
@@ -182,7 +182,7 @@
     "type": "DESSERT",
     "price": 6500,
     "quantity": 1,
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/de/CHEESE_CAKE.JPG",
+    "imageUrl": "/images/menu/cafe_cheese_cake.jpg",
     "options": [
       {
         "name": "packaging",
