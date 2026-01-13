@@ -33,7 +33,7 @@ export default function CartDrawer() {
               <motion.li key={index} exit={{ opacity: 0, x: -20 }} className="flex justify-between items-center border-b py-3 hover:bg-gray-50 rounded">
                 {/* 왼쪽: 썸네일 + 상품명 + 가격 */}
                 <div className="flex items-center gap-3">
-                  {item.imageUrl && <Image src={item.imageUrl} className="w-12 h-12 object-cover rounded" alt={''} width={200} height={200} priority={index < 4} />}
+                  {item.imageUrl && <Image src={item.imageUrl} className="w-12 h-12 object-cover rounded" alt={''} width={200} height={200} />}
                   <div>
                     <p className="font-medium">{item.name}</p>
                     {/* 옵션 정보 */}
